@@ -1,4 +1,18 @@
 #!/usr/bin/python
+
+#Install guide Soil moisture sensor
+#VCC -> 5V
+#GND -> GND
+#SIG -> GPIO 21
+#
+#    NPN Transistor Wiring
+#  VCC     -->  3v3 (Pin 1)
+#  GND     -->  GND (Pin 9)
+#  Emitter -->  + WaterPump
+#  GND     -->  - Waterpump
+
+
+
 import RPi.GPIO as GPIO
 import time
  
