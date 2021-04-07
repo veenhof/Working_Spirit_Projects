@@ -20,16 +20,26 @@ import time
 channel = 21
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(channel, GPIO.IN)
- 
+RELAIS_1_GPIO = 17
+GPIO.setup(RELAIS_1_GPIO, GPIO.OUT) # GPIO Assign mode
+GPIO.output(RELAIS_1_GPIO, GPIO.LOW) # out
+GPIO.output(RELAIS_1_GPIO, GPIO.HIGH) # on
+
+
 def callback(channel):
         if GPIO.input(channel):
                 print "Water Detected!"
         else:
-                print "Water Detected!"
- 
+                print "Water NOT Detected!"
+                print('Button push')
+                GPIO.output(17, 0)
+                time.sleep(1)
+                GPIO.output(17, 1)
+                 
 GPIO.add_event_detect(channel, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 GPIO.add_event_callback(channel, callback)  # assign function to GPIO PIN, Run function on change
- 
+
+
 # infinite loop
 while True:
         time.sleep(1)
